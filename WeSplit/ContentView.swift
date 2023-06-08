@@ -12,6 +12,7 @@ struct ContentView: View {
     @State private var people = 2
     @State private var tipPercent = 20
 
+
     @FocusState private var amountIsFocused: Bool
 
     let tipPercentages = [10, 15, 20, 25, 0]
@@ -49,7 +50,7 @@ struct ContentView: View {
 
                 Section {
                     Picker("Tip percentage", selection: $tipPercent) {
-                        ForEach(0..<1010) {
+                        ForEach(0..<100) {
                             Text($0, format: .percent)
                         }
                     }
@@ -62,6 +63,7 @@ struct ContentView: View {
                     Text(totalAmount, format: dollarFormat)
                 } header: {
                     Text("Total amount")
+                        .foregroundColor(tipPercent == 0 ? .red : .black)
                 }
 
                 Section {
